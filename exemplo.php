@@ -84,10 +84,10 @@ $sb = $sb->sb;
 $campo = $db->escape('Valor do campo');
 
 //retorna o ultimo id inserido no banco
-$db->insertId();
+echo $db->insertId();
 
 //executa a query, retorna um objeto com funções
-$query = $db->query('QUERY');
+$query = $db->query('{{QUERY_STRING}}');
 
 //se for query de busca, retorna em objeto
 $result = $query->result();
