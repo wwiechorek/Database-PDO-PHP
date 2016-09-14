@@ -33,6 +33,7 @@ echo $db->insertId();
 //executa a query, retorna um objeto com funções
 $query = $db->query('{{QUERY_STRING}}');
 ```
+###Opções para o objeto gerado pelo metodo 'query'
 ```PHP
 //se for query de busca, retorna em objeto
 $result = $query->result();
