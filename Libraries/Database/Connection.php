@@ -22,6 +22,7 @@ class Connection{
 		$dbname = $config['dbname'];
 		$user = (isset($config['user'])) ? $config['user'] : "root";
 		$pass = (isset($config['pass'])) ? $config['pass'] : "123456";
+		$charset = (isset($config['charset'])) ? $config['charset'] : "utf8";
 		try{
 			$this->_PDO = new \PDO($driver.":host=$host;dbname=".$dbname.";charset=utf8", $user, $pass);
 			$this->_PDO->setAttribute(\PDO::MYSQL_ATTR_INIT_COMMAND, "SET NAMES 'utf8'");
