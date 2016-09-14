@@ -2,6 +2,7 @@
 Acesso ao banco de dados usando PDO - PHP.
 
 #Conectando ao banco de dados MySql usando
+```PHP
 Database::newConnection([
   "host" => "localhost",
   "dbname" => "nome_do_db",
@@ -11,3 +12,4 @@ Database::newConnection([
     echo $err; exit;
   }
 ]);
+```
