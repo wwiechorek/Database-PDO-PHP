@@ -14,13 +14,13 @@ Database::newConnection([
 ]);
 ```
 
-###Perando a instancia da conexão
+###Pegando a instância da conexão
 
 ```PHP
 $db = Database::getInstance();
 ```
 
-###Funções da instancia
+###Funções da instância
 ```PHP
 //Mesma função do mysql_real_escape_string
 $campo = $db->escape('Valor do campo');
@@ -47,4 +47,53 @@ print_r($resultAssoc);
 //No mysql retona o total de resultados de uma query de busca ou alteração/exclusão
 $numRows = $query->rowCount();
 echo $numRows;
+```
+
+###Conectando em mais de um banco de dados
+```PHP
+//banco1, segundo parametro da função 'newConnection' é o nome da instância, default: db
+Database::newConnection([
+  "host" => "localhost",
+  "dbname" => "nome_do_db",
+  "user" => "root",
+  "pass" => "123456",
+  "error" => function($err) {
+    echo $err; exit;
+  }
+]);
+
+//banco2
+Database::newConnection([
+  "host" => "localhost",
+  "dbname" => "nome_do_db2",
+  "user" => "root",
+  "pass" => "123456",
+  "error" => function($err) {
+    echo $err; exit;
+  }
+], 'db2');
+```
+###Pegando a instância das conexões
+```PHP
+//por default o getInstance passa 'db'
+$db = Database::getInstance();
+```
+```PHP
+$db2 = Database::getInstance('db2');
+```
+
+###Extendendo uma classe e pegando as instâncias da biblioteca. Exemplo:
+```PHP
+class NomeDaClasse extends Libraries\Database\Database {
+
+  function exemplo() {
+    //onde db é o nome da instância
+    $campo = $this->db->escape('campo');
+  }
+  
+  function exemploBanco2() {
+  //onde db2 é o nome da instância
+    $campo = $this->db2->escape('campo');
+
+}
 ```
