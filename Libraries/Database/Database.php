@@ -14,7 +14,7 @@ class Database {
 		return $instance[$named];
 	}
 
-	function newConnection($config, $named = 'db'){
+	static function newConnection($config, $named = 'db'){
 		$connectDB = Connection::getInstance($named);
 		$connectDB[$named]->newConnection($config);
 	}
